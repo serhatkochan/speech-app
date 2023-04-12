@@ -5,7 +5,7 @@ function App() {
     const handleSpeech = (lang) => {
         let utterance = new SpeechSynthesisUtterance(message);
 
-        utterance.rate = 0.2; // default 1
+        utterance.rate = 0.9; // default 1
         utterance.lang = lang; // default tarayıcı dili
         window.speechSynthesis.speak(utterance);
     }
