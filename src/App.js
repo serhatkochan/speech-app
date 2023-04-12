@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 function App() {
-    const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('Serhat');
     const handleSpeech = (lang) => {
         let utterance = new SpeechSynthesisUtterance(message);
 
@@ -15,7 +15,12 @@ function App() {
     }
     return (
         <>
-            <input placeholder="Mesaj Gir" type="text" value={message} onChange={onMessageChange}/>
+            <input
+                placeholder="Mesaj Gir"
+                type="text"
+                value={message}
+                onChange={onMessageChange}
+            />
             <button onClick={() => handleSpeech('tr')}>Türkçe Okut</button>
             <button onClick={() => handleSpeech('en')}>ingilizce Okut</button>
             <button onClick={() => handleSpeech('ja')}>Japonca Okut</button>
