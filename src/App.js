@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [message, setMessage] = useState('');
+    const handleSpeech = (lang) => {
+        let utterance = new SpeechSynthesisUtterance(message);
+
+        utterance.rate = 0.2; // default 1
+        utterance.lang = lang; // default tarayıcı dili
+        window.speechSynthesis.speak(utterance);
+    }
+
+    const onMessageChange = (e) => {
+        setMessage(e.target.value);
+    }
+    return (
+        <>
+            <input placeholder="Mesaj Gir" type="text" value={message} onChange={onMessageChange}/>
+            <button onClick={() => handleSpeech('tr')}>Türkçe Okut</button>
+            <button onClick={() => handleSpeech('en')}>ingilizce Okut</button>
+            <button onClick={() => handleSpeech('ja')}>Japonca Okut</button>
+        </>
+    );
 }
 
 export default App;
